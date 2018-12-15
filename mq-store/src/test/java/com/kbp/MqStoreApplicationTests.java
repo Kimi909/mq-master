@@ -1,4 +1,4 @@
-package com.ekbp;
+package com.kbp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
