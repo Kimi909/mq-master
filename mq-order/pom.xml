@@ -60,8 +60,8 @@
 			<version>${dubbo.version}</version>
 		</dependency>
 	<!--	<dependency>
-			<groupId>com.bfxy</groupId>
-			<artifactId>bfxy-store-api</artifactId>
+			<groupId>com.kbp</groupId>
+			<artifactId>kbp-store-api</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>-->
 

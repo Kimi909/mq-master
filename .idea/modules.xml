@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/mq-master.iml" filepath="$PROJECT_DIR$/mq-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/mq-order/mq-order.iml" filepath="$PROJECT_DIR$/mq-order/mq-order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mq-pay-a/mq-pay-a.iml" filepath="$PROJECT_DIR$/mq-pay-a/mq-pay-a.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mq-pay-b/mq-pay-b.iml" filepath="$PROJECT_DIR$/mq-pay-b/mq-pay-b.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mq-pkg/mq-pkg.iml" filepath="$PROJECT_DIR$/mq-pkg/mq-pkg.iml" />
       <module fileurl="file://$PROJECT_DIR$/mq-store/mq-store.iml" filepath="$PROJECT_DIR$/mq-store/mq-store.iml" />
       <module fileurl="file://$PROJECT_DIR$/mq-storeapi/mq-store-api.iml" filepath="$PROJECT_DIR$/mq-storeapi/mq-store-api.iml" />
     </modules>

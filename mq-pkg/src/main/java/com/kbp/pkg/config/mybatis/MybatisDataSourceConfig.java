@@ -1,4 +1,4 @@
-package com.kbp.order.config.mybatis;
+package com.kbp.pkg.config.mybatis;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -24,7 +24,7 @@ public class MybatisDataSourceConfig {
 		// 添加XML目录
 		ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 		try {
-			bean.setMapperLocations(resolver.getResources("classpath:com/kbp/order/mapping/*.xml"));
+			bean.setMapperLocations(resolver.getResources("classpath:com/kbp/pkg/mapping/*.xml"));
 			SqlSessionFactory sqlSessionFactory = bean.getObject();
 			sqlSessionFactory.getConfiguration().setCacheEnabled(Boolean.TRUE);
 			

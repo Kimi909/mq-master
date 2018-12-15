@@ -73,6 +73,9 @@
         <module>mq-order</module>
         <module>mq-store</module>
         <module>mq-storeapi</module>
+        <module>mq-pay-a</module>
+        <module>mq-pay-b</module>
+        <module>mq-pkg</module>
     </modules>
 
 

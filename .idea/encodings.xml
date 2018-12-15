@@ -3,6 +3,9 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mq-order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mq-pay-a" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mq-pay-b" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mq-pkg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mq-store" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mq-storeapi" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
