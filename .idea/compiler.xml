@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="mq-order" />
         <module name="mq-store" />
+        <module name="mq-store-api" />
         <module name="mqstore" />
       </profile>
     </annotationProcessing>
@@ -15,6 +16,7 @@
       <module name="mq-master" target="1.8" />
       <module name="mq-order" target="1.8" />
       <module name="mq-store" target="1.8" />
+      <module name="mq-store-api" target="1.8" />
       <module name="mqstore" target="1.5" />
     </bytecodeTargetLevel>
   </component>

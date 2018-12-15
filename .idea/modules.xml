@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/mq-master.iml" filepath="$PROJECT_DIR$/mq-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/mq-order/mq-order.iml" filepath="$PROJECT_DIR$/mq-order/mq-order.iml" />
       <module fileurl="file://$PROJECT_DIR$/mq-store/mq-store.iml" filepath="$PROJECT_DIR$/mq-store/mq-store.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mq-storeapi/mq-store-api.iml" filepath="$PROJECT_DIR$/mq-storeapi/mq-store-api.iml" />
     </modules>
   </component>
 </project>
