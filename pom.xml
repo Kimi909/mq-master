@@ -72,6 +72,7 @@
     <modules>
         <module>mq-order</module>
         <module>mq-store</module>
+        <module>mq-storeapi</module>
     </modules>
 
 
