@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mq-order" />
+        <module name="mq-store" />
+        <module name="mqstore" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mq-master" target="1.8" />
+      <module name="mq-order" target="1.8" />
+      <module name="mq-store" target="1.8" />
+      <module name="mqstore" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
