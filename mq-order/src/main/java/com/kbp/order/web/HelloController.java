@@ -11,7 +11,7 @@ public class HelloController {
 
     @Reference(version = "1.0.0",
             application = "${dubbo.application.id}",
-            interfaceName = "com.kbp.store.service.api",
+            interfaceName = "com.kbp.store.service.api.HelloServiceApi",
             check = false,
             timeout = 1000,
             retries = 0

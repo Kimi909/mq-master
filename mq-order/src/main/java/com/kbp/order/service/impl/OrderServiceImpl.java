@@ -23,7 +23,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Reference(version = "1.0.0",
             application = "${dubbo.application.id}",
-            interfaceName = "com.bfxy.store.service.StoreServiceApi",
+            interfaceName = "com.kbp.store.service.api.StoreServiceApi",
             check = false,
             timeout = 3000,
             retries = 0
@@ -32,7 +32,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public boolean createOrder(String cityId, String platformId, String userId, String supplierId, String goodsId) {
-        Boolean flag =false;
+        Boolean flag =true;
 
 
         try {
@@ -52,10 +52,33 @@ public class OrderServiceImpl implements OrderService {
             order.setCreateTime(currentTime);
             order.setUpdateBy("admin");
             order.setUpdateTime(currentTime);
+            System.out.println("supplierId: " +supplierId + ",goodsId:  " + goodsId);
+            int currentVersion = storeServiceApi.selectVersion(supplierId, goodsId);
+            int updateRetCount = storeServiceApi.updateStoreCountByVersion(currentVersion, supplierId, goodsId, "admin", currentTime);
 
+            if(updateRetCount == 1){
+                // DOTO:	如果出现SQL异常 入库失败, 那么要对 库存的数量 和版本号进行回滚操作
+                orderMapper.insertSelective(order);
+
+                //	没有更新成功 1 高并发时乐观锁生效   2 库存不足
+            }else if(updateRetCount == 0){
+                flag =false;
+                int currentStoreCount = storeServiceApi.selectStoreCount(supplierId, goodsId);
+                if(currentStoreCount == 0) {
+                    //{flag:false , messageCode: 003 , message: 当前库存不足}
+                    System.err.println("-----当前库存不足...");
+                } else {
+                    //{flag:false , messageCode: 004 , message: 乐观锁生效}
+                    System.err.println("-----乐观锁生效...");
+                }
+
+
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
+            // 	具体捕获的异常是什么异常
+            flag = false;
         }
 
 

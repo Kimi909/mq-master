@@ -1,7 +1,9 @@
 package com.kbp.order.web;
 
+import com.kbp.order.service.OrderService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class OrderController {
+
+    @Autowired
+    private OrderService orderService;
 
     //1 超时降级，调用另一个方法
 /*    	@HystrixCommand(
@@ -53,7 +58,9 @@ public class OrderController {
                               @RequestParam("userId") String userId,
                               @RequestParam("supplierId") String supplierId,
                               @RequestParam("goodsId") String goodsId) throws Exception {
-        return "下单成功";
+
+        boolean flag = orderService.createOrder(cityId, platformId, userId, supplierId, goodsId);
+        return flag ? "下单成功" : "下单失败";
     }
 
 

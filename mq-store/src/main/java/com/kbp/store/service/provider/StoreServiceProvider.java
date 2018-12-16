@@ -21,7 +21,10 @@ public class StoreServiceProvider implements StoreServiceApi {
 
     @Override
     public int selectVersion(String supplierId, String goodsId) {
-        return storeMapper.selectVersion(supplierId,goodsId);
+        System.out.println("supplierId: " + supplierId + ",goodsId " + goodsId);
+        int version = storeMapper.selectVersion(supplierId,goodsId);
+        System.out.println(version);
+        return version;
     }
 
     @Override
