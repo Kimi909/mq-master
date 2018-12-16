@@ -2,7 +2,9 @@ package com.kbp.pkg.mapper;
 
 
 import com.kbp.pkg.entity.Packaged;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface PackagedMapper {
     int deleteByPrimaryKey(String packageId);
 

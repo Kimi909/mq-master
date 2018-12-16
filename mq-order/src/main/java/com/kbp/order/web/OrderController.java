@@ -12,32 +12,47 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class OrderController {
 
-    //超时降级，调用另一个方法
-  /*  @HystrixCommand(
-           commandKey = "createOrder",
-           commandProperties = {
-                   @HystrixProperty(name="execution.timeout.enabled",value = "true"),
-                   @HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value = "3000")
-           },
-           fallbackMethod = "createOrderFallbackMethod"
-    )*/
-
-    	@HystrixCommand(
+    //1 超时降级，调用另一个方法
+/*    	@HystrixCommand(
 				commandKey = "createOrder",
 				commandProperties = {
 						@HystrixProperty(name="execution.timeout.enabled", value="true"),
 						@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds", value="3000")
 				},
 				fallbackMethod = "createOrderFallbackMethod4Timeout"
-			)
-    @RequestMapping("/createOrder")
-    public String createOrder(@RequestParam("cityId")String cityId,
-                              @RequestParam("platformId")String platformId,
-                              @RequestParam("userId")String userId,
-                              @RequestParam("supplierId")String supplierId,
-                              @RequestParam("goodsId")String goodsId) throws Exception {
-        Thread.sleep(50000000);
+			)*/
 
+    //	限流策略：线程池方式
+	/*@HystrixCommand(
+				commandKey = "createOrder",
+				commandProperties = {
+						@HystrixProperty(name="execution.isolation.strategy", value="THREAD")
+				},
+				threadPoolKey = "createOrderThreadPool",
+				threadPoolProperties = {
+						@HystrixProperty(name="coreSize", value="10"),
+						@HystrixProperty(name="maxQueueSize", value="20000"),
+						@HystrixProperty(name="queueSizeRejectionThreshold", value="30")
+				},
+				fallbackMethod="createOrderFallbackMethod4Thread"
+			)*/
+
+        //	限流策略：信号量方式
+
+	/*@HystrixCommand(
+				commandKey="createOrder",
+				commandProperties= {
+						@HystrixProperty(name="execution.isolation.strategy", value="SEMAPHORE"),
+						@HystrixProperty(name="execution.isolation.semaphore.maxConcurrentRequests", value="3")
+				},
+				fallbackMethod = "createOrderFallbackMethod4semaphore"
+			)*/
+    @RequestMapping("/createOrder")
+    public String createOrder(@RequestParam("cityId") String cityId,
+                              @RequestParam("platformId") String platformId,
+                              @RequestParam("userId") String userId,
+                              @RequestParam("supplierId") String supplierId,
+                              @RequestParam("goodsId") String goodsId) throws Exception {
         return "下单成功";
     }
 
@@ -51,5 +66,25 @@ public class OrderController {
 
         System.err.println("-------超时降级策略执行------------");
         return "hysrtix timeout !";
+    }
+
+
+    public String createOrderFallbackMethod4Thread(@RequestParam("cityId")String cityId,
+                                                   @RequestParam("platformId")String platformId,
+                                                   @RequestParam("userId")String userId,
+                                                   @RequestParam("suppliedId")String suppliedId,
+                                                   @RequestParam("goodsId")String goodsId) throws Exception {
+        System.err.println("-------线程池限流降级策略执行------------");
+        return "hysrtix threadpool !";
+    }
+
+
+    public String createOrderFallbackMethod4semaphore(@RequestParam("cityId")String cityId,
+                                                      @RequestParam("platformId")String platformId,
+                                                      @RequestParam("userId")String userId,
+                                                      @RequestParam("suppliedId")String suppliedId,
+                                                      @RequestParam("goodsId")String goodsId) throws Exception {
+        System.err.println("-------信号量限流降级策略执行------------");
+        return "hysrtix semaphore !";
     }
 }

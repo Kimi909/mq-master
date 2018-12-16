@@ -1,11 +1,12 @@
 package com.kbp.paya.mapper;
 
 import com.kbp.paya.entity.CustomerAccount;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.math.BigDecimal;
 import java.util.Date;
-
+@Mapper
 public interface CustomerAccountMapper {
     int deleteByPrimaryKey(String accountId);
 

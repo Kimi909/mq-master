@@ -1,10 +1,11 @@
 package com.kbp.order.mapper;
 
 import com.kbp.order.entity.Order;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
-
+@Mapper
 public interface OrderMapper {
     int deleteByPrimaryKey(String orderId);
 

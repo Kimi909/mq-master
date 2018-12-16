@@ -2,7 +2,9 @@ package com.kbp.paya.mapper;
 
 
 import com.kbp.paya.entity.BrokerMessageLog;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface BrokerMessageLogMapper {
     int deleteByPrimaryKey(String messageId);
 
